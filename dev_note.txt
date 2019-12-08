@@ -1,0 +1,22 @@
+Improvement topics
+
+[Polls improvements]
+- anyone can add poll questions and all users can access to the questions
+- only the owner and admin can delete the poll
+- only the owner can close the poll
+- each user can vote only once to a question
+- after voting is completed, users can access to the result page of a question
+- in result page, user can go a page where he can modify the previous vote if the poll is still open
+- beautify pages: 
+	* convert number of votes to a bar chart
+        * improve visuals of questions and choices  
+	* improve buttons and spacing
+
+[Books improvements]
+- anyone can create a record for a new book
+- only the creator can modify the contents of the record and delete the book that he created
+- a user can send a modification request to the book record, and the creator can grant the request
+- admin can delete the record but cannot modify the content
+
+[Sidebar improvements]
+- ...

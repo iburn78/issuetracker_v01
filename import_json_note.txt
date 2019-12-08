@@ -1,0 +1,22 @@
+# run the following in the shell
+# For those that are having trouble with adding the extra posts from the posts.json,  make sure you have the user id exists for id 1 and id 2 and you did not delete that user.
+# You can check with this command in the shell:
+# 
+# from django.contrib.auth.models import User
+# User.objects.get(id=1)  # make sure this returns a user 
+# User.objects.get(id=2)  # make sure this returns a user 
+#  
+# If no user is returned, make a new user with the <missing id>:
+# User.objects.create_user(username='missing', email='missing@email.com', password='testing321', id=<MISSING ID>) 
+
+import json
+
+from blog.models import Post
+with open('posts.json') as f:
+    posts_json = json.load(f)
+
+for post in posts_json:
+    post = Post(title=post['title'], content=post['content'], author_id=post['user_id'])
+    post.save()
+
+    
