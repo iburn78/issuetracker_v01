@@ -3,9 +3,9 @@
 	<h4>This page shows all admin-uploaded data analyses. </h4>
 	{% for da in dataanalyses %}
         <article class="media content-section">
-	    <img class="rounded-circle article-img" src="{{ da.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
+			<div class="media-body">
+				<div class="article-metadata">
+			  <img class="rounded-circle article-img" src="{{ da.author.profile.image.url }}">
               <a class="mr-2" href="{% url 'user-posts' da.author.username %}">{{ da.author }}</a>
               <small class="text-muted">{{ da.date_posted|date:"F d, Y" }}</small>
             </div>
