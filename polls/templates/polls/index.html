@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+{% if latest_question_list %}
+	<ul>
+	{% for question in latest_question_list %}
+	<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a> by {{ question.author }}</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No polls are available</p>
+{% endif %}
+
+<div class="border-top pt-3">
+	Want to add a poll question? <a class="ml-2" href="{% url 'polls:question-create' %}">Add a question</a>
+</div>
+{% endblock %}

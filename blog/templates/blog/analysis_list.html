@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+	{% block content %}
+	<h4>This page shows all admin-uploaded data analyses. </h4>
+	{% for da in dataanalyses %}
+        <article class="media content-section">
+	    <img class="rounded-circle article-img" src="{{ da.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' da.author.username %}">{{ da.author }}</a>
+              <small class="text-muted">{{ da.date_posted|date:"F d, Y" }}</small>
+            </div>
+	    <h2><a class="article-title" href="{% url 'post-detail' da.id %}">{{ da.title }}</a></h2>
+			<p class="article-content">{{ da.content }}</p>
+			{% if da.data_image %}
+			<img src="{{ da.data_image.url }}" alt = "Images for this post" style="width:100%;height:100%;object-fit:contain;border:0;">
+			{% endif %}
+			<p class="article-content">{{ da.additional_desc }}</p>
+          </div>
+        </article>
+
+	{% endfor %}
+	<!--
+	<div class = 'article-content'>
+	{% load static %}
+	<img src="{% static "path/to/file" %}" style="width:100%;height:100%;object-fit:contain;border:0;" alt = "Image for stock correlation - test">
+
+	Note: path/to/file is different when in development server mode and in Apache; refer to static file handling in django documentation
+    </div>
+	-->
+
+	{% endblock content %}
