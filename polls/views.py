@@ -14,6 +14,7 @@ def index(request):
 
 def detail(request, question_id): 
     question = get_object_or_404(Question, pk=question_id)
+    request.session['Current_question_id'] = question_id
     
     return render(request, 'polls/detail.html', {'question':question})
 
@@ -61,23 +62,29 @@ class ChoiceCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     # print("On startup, this sentence is executed.")
     model = Choice 
     fields = ['choice_text']
+    # template_name = "polls/choice_form.html"
+    
+    def get(self, request, *args, **kwargs):
+        # print("GET Function Called")
+        self.object = None
+        return self.render_to_response(self.get_context_data())
 
     def get_context_data(self, **kwargs):
         context = super(ChoiceCreateView, self).get_context_data(**kwargs)
-        context['question_obj'] = Question.objects.get(id=self.kwargs.get('pk'))
+        context['question_obj'] = Question.objects.get(id= self.request.session['Current_question_id']) # Question.objects.get(id=self.kwargs.get('pk'))
         return context
 
     def form_valid(self, form):  # https://docs.djangoproject.com/en/2.0/topics/forms/modelforms/#the-save-method 
         choice = form.save(commit=False)
-        choice.question = Question.objects.get(id=self.kwargs.get('pk')) 
+        choice.question = Question.objects.get(id= self.request.session['Current_question_id']) 
         choice.save()
         form.save_m2m()
         self.object = choice
         return HttpResponseRedirect(self.get_success_url())
 
     def test_func(self):
-        choice = self.get_object()
-        if self.request.user == choice.question.author:
+        # choice = self.get_object()
+        if self.request.user == Question.objects.get(id = self.request.session['Current_question_id']).author: 
             return True
         return False
     
