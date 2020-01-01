@@ -17,6 +17,6 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk':self.pk})
 
 
-class DataAnalysis(Post):
-    data_image = models.ImageField(upload_to='data_imgs', blank=True)
-    additional_desc = models.TextField()
+# class DataAnalysis(Post):
+#     data_image = models.ImageField(upload_to='data_imgs', blank=True)
+#     additional_desc = models.TextField()
