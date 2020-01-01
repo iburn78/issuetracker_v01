@@ -9,7 +9,7 @@ from django.views.generic import (
         DeleteView
         )
 from django.http import HttpResponse
-from .models import Post, DataAnalysis
+from .models import Post #, DataAnalysis
 from .visualize import read_issuetrackerdb, table_plot
 
 def home(request):
@@ -29,7 +29,7 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
-    paginate_by = 5 
+    paginate_by = 15 
 
     def get_queryset(self): # overriding a method
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -70,10 +70,10 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-class AnalysisListView(ListView):
-    model = DataAnalysis
-    template_name = 'blog/analysis_list.html'
-    context_object_name = 'dataanalyses'
+# class AnalysisListView(ListView):
+    # model = DataAnalysis
+    # template_name = 'blog/analysis_list.html'
+    # context_object_name = 'dataanalyses'
 
 
 def about(request):
