@@ -9,6 +9,7 @@ from .views import (
         PostUpdateView,
         PostDeleteView, 
         UserPostListView, 
+        tagged,
         )
 from . import views
 
@@ -20,6 +21,7 @@ urlpatterns = [
     path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'), 
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'), 
     path('about/', views.about, name='blog-about'),
+    path('tag/<slug:slug>/', tagged, name="tagged"),
 ] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
