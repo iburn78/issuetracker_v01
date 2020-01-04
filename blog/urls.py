@@ -9,7 +9,6 @@ from .views import (
         PostUpdateView,
         PostDeleteView, 
         UserPostListView, 
-        # AnalysisListView
         )
 from . import views
 
@@ -21,7 +20,6 @@ urlpatterns = [
     path('post/<int:pk>/update', PostUpdateView.as_view(), name='post-update'), 
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'), 
     path('about/', views.about, name='blog-about'),
-    # path('analysis/', AnalysisListView.as_view(), name='analysis-list'),
 ] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
