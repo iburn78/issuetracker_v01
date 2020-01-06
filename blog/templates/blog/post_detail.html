@@ -18,7 +18,7 @@
       <img src="{{ object.image.url }}" alt = "Images for this post" style="width:100%;height:100%;object-fit:contain;border:0;">
     {% endif %}
       {% for tag in object.tags.all %}
-      <a href="{% url 'tagged-posts' tag.id %}" class="badge badge-info" >#{{ tag }}</a>
+      <a href="{% url 'tagged-posts' tag.id %}" class="badge badge-info mt-1" >#{{ tag }}</a>
       {% endfor %}
       <p class="article-content mt-2 mb-1">{{ object.content }}</p>
 </article>
