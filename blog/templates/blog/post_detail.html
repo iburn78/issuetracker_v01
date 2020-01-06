@@ -13,15 +13,15 @@
 	{% endif %}
       </div>
   </div>
-      <h4 class="article-title">{{ object.title }}</h4>
+  <h4 class="article-title mt-2 mb-2">{{ object.title }}</h4>
     {% if object.image %}
       <img src="{{ object.image.url }}" alt = "Images for this post" style="width:100%;height:100%;object-fit:contain;border:0;">
     {% endif %}
       {% for tag in object.tags.all %}
-      <a href="#" class="badge badge-info" >{{ tag }}</a>
+      <a href="{% url 'tagged-posts' tag.id %}" class="badge badge-info" >#{{ tag }}</a>
       {% endfor %}
-      <p class="article-content">{{ object.content }}</p>
-			<div class="border-top my-0">
-   </div>
+      <p class="article-content mt-2 mb-1">{{ object.content }}</p>
 </article>
+<p align = 'right'><small class="text-muted">-- issuetracker post</small><p>
+	<a class="btn btn-primary btn-sm mt-1 mb-1 float-right" href="{% url 'blog-home' %}">Post lists</a>
 {% endblock content %}
