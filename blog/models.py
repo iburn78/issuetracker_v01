@@ -10,7 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     image = models.ImageField(upload_to='post_imgs', blank=True)
-    slug = models.SlugField(unique=True, max_length=100)
+    slug = models.SlugField(unique=True, max_length=100, blank=True)
     tags = TaggableManager()
 
     def __str__(self):
