@@ -9,9 +9,9 @@
     	<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
-      <link rel="stylesheet" href="/static/css/tagsinput.css" />
+      <link rel="stylesheet" href="{% static '/css/tagsinput.css' %}" />
 		  <title> Issue Tracker</title>
-      <link rel="icon" href="/media/IssueTracker_Logo.png">
+		  <link rel="icon" href="{% static 'IssueTracker_Logo.png' %}">
     </head>
     <body>
         <header class="site-header">
@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-4">
               <div class="content-section">
-                <h5>Issue Tracker <small><i>(beta)</i></small></h5>
+		      <h5><img class="article-img" src="{% static 'IssueTracker_Logo.png' %}">Issue Tracker <small><i>(beta)</i></small></h5>
                 <p class='text-muted'> more on issuetracker...
                   <ul class="list-group">
                     <li class="list-group-item list-group-item-light"><a href="{% url 'blog-about' %}">About Issue Tracker</a></li>
