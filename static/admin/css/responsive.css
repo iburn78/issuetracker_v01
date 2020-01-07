@@ -447,6 +447,11 @@ input[type="submit"], button {
 /* Mobile */
 
 @media (max-width: 767px) {
+    /* Andy's addition for full width at mobile */
+    .mx-w-100 {
+    max-width: 100% !important;
+    }
+
     /* Layout */
 
     #header, #content, #footer {
