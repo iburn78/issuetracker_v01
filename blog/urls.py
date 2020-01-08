@@ -1,6 +1,4 @@
 from django.urls import path
-# from django.conf.urls.static import static
-# from django.conf import settings
 
 from .views import (
         PostListView, 
@@ -22,7 +20,7 @@ urlpatterns = [
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'), 
     path('about/', views.about, name='blog-about'),
     path('tag/<int:pk>', TaggedPostListView.as_view(), name='tagged-posts'), 
-] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
 
 
 

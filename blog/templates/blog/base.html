@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
       <link rel="stylesheet" href="{% static 'css/tagsinput.css' %}" />
 		  <title> Issue Tracker</title>
-		  <link rel="icon" href="{% static 'IssueTracker_Logo.png' %}">
+		  <link rel="icon" href="{% static 'blog/IssueTracker_Logo.png' %}">
     </head>
     <body>
         <header class="site-header">
@@ -44,7 +44,7 @@
 
         <main role="main" class="container">
           <div class="row">
-            <div class=""><!--col-md-8 mx-w-100-->
+            <div class="col-sm-4"><!--col-md-8-->
 	      {% if messages %}
 	          {% for message in messages %}
 		      <div class="alert alert-{{ message.tags }}">
@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-auto">
               <div class="content-section">
-		      <h5><img class="article-img" src="{% static 'IssueTracker_Logo.png' %}">Issue Tracker <small><i>(beta)</i></small></h5>
+		      <h5><img class="article-img" src="{% static 'blog/IssueTracker_Logo.png' %}">Issue Tracker <small><i>(beta)</i></small></h5>
                 <p class='text-muted'> more on issuetracker...
                   <ul class="list-group">
                     <li class="list-group-item list-group-item-light"><a href="{% url 'blog-about' %}">About Issue Tracker</a></li>
