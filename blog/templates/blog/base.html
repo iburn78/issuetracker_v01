@@ -44,7 +44,7 @@
 
         <main role="main" class="container">
           <div class="row">
-            <div class="mx-w-100"><!--col-md-8-->
+            <div class=""><!--col-md-8 mx-w-100-->
 	      {% if messages %}
 	          {% for message in messages %}
 		      <div class="alert alert-{{ message.tags }}">
@@ -54,7 +54,7 @@
 	      {% endif %} 
               {% block content %}{% endblock %}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-auto">
               <div class="content-section">
 		      <h5><img class="article-img" src="{% static 'IssueTracker_Logo.png' %}">Issue Tracker <small><i>(beta)</i></small></h5>
                 <p class='text-muted'> more on issuetracker...
