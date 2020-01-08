@@ -3,7 +3,7 @@
 	<h4 class="mb-3">Posts by <b> {{ view.kwargs.username }} </b> ({{ page_obj.paginator.count }})</h4>
 	{% for post in posts %}
         <article>
-	        <div class="border-top my-0"></div>
+	        <div class="border-top border-warning"></div>
 			<div class="media-body">
 				<div class="article-metadata">
 				<img class="rounded article-img mt-1 mb-0" src="{{ post.author.profile.image.url }}">
@@ -12,7 +12,9 @@
             </div></div>
 	    <h4><a class="article-title mt-2 mb-2" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
 			{% if post.image %}
-			<img src="{{ post.image.url }}" alt = "Images for this post" style="width:100%;height:100%;object-fit:contain;border:0;">
+			<div class="row">
+			<img class="img-fluid" src="{{ post.image.url }}" alt = "Image for this post"> 
+			</div>	
 			{% endif %}
 			<div style="display:flex">
 				{% for tag in post.tags.all %}

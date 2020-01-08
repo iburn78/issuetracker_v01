@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
 <article>  <!-- class="media content-section"> -->
-	<div class="border-top my-0"></div>
+	<div class="border-top border-warning"></div>
   <div class="media-body">
     <div class="article-metadata">
       <img class="rounded article-img mt-1 mb-0" src="{{ object.author.profile.image.url }}">
@@ -15,11 +15,15 @@
   </div>
   <h4 class="article-title mt-2 mb-2">{{ object.title }}</h4>
     {% if object.image %}
-      <img src="{{ object.image.url }}" alt = "Images for this post" style="width:100%;height:100%;object-fit:contain;border:0;">
+			<div class="row">
+      <img class="img-fluid" src="{{ object.image.url }}" alt = "Image for this post"> 
+			</div>
     {% endif %}
+			<div style="display:flex">
       {% for tag in object.tags.all %}
       <a href="{% url 'tagged-posts' tag.id %}" class="badge badge-info mt-1" >#{{ tag }}</a>
       {% endfor %}
+			</div>
       <p class="article-content mt-2 mb-1">{{ object.content }}</p>
 </article>
 <p align = 'right'><small class="text-muted">-- issuetracker post</small><p>

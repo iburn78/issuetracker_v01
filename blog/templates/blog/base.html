@@ -9,7 +9,8 @@
     	<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
-      <link rel="stylesheet" href="{% static 'css/tagsinput.css' %}" />
+      <link rel="stylesheet" href="{% static 'blog/tagsinput.css' %}" />
+      <link rel="stylesheet" href="{% static 'blog/issuetracker_style.css' %}" />
 		  <title> Issue Tracker</title>
 		  <link rel="icon" href="{% static 'blog/IssueTracker_Logo.png' %}">
     </head>
@@ -28,12 +29,12 @@
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
 		    {% if user.is_authenticated %}
-		        <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+		        <a class="nanav-link flex-fill" href="{% url 'post-create' %}">New Post</a>
 		        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 		        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
 		    {% else %}
 		        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
 		    {% endif %}
 
                 </div>
@@ -44,7 +45,7 @@
 
         <main role="main" class="container">
           <div class="row">
-            <div class="col-sm-4"><!--col-md-8-->
+            <div class="col-md-8 img_sm">
 	      {% if messages %}
 	          {% for message in messages %}
 		      <div class="alert alert-{{ message.tags }}">
@@ -54,7 +55,7 @@
 	      {% endif %} 
               {% block content %}{% endblock %}
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-4">
               <div class="content-section">
 		      <h5><img class="article-img" src="{% static 'blog/IssueTracker_Logo.png' %}">Issue Tracker <small><i>(beta)</i></small></h5>
                 <p class='text-muted'> more on issuetracker...
