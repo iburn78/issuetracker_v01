@@ -4,19 +4,13 @@
   */
 }
 
-@media(min-width:767px){
-  .img_sm{
-    color: darkblue;
-  }
+@media(min-width:767px){   /* for screen larger than sm (mobile) */
   .row > img{ 
     margin-left: 7.5px;
   }
 }
 
-@media(max-width:767px){
-  .img_sm{
-    color: blue;
-  }
+@media(max-width:767px){   /* for screen sm or smaller */
   .row > img{ 
   }
 }
