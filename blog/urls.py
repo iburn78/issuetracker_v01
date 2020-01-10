@@ -8,6 +8,7 @@ from .views import (
         PostDeleteView, 
         UserPostListView, 
         TaggedPostListView, 
+        PostCompactListView,
         )
 from . import views
 
@@ -20,6 +21,7 @@ urlpatterns = [
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='post-delete'), 
     path('about/', views.about, name='blog-about'),
     path('tag/<int:pk>', TaggedPostListView.as_view(), name='tagged-posts'), 
+    path('list/', PostCompactListView.as_view(), name='post-compact-list'),
 ] 
 
 

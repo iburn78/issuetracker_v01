@@ -25,7 +25,7 @@
         </article>
 	<p align = 'right'><small class="text-muted">-- issuetracker post</small></p>
 	{% endfor %}
-	<a class="btn btn-primary btn-sm mt-1 mb-1 float-right" href="{% url 'blog-home' %}">Post lists</a><br/><br/>
+	<a class="btn btn-primary btn-sm mt-1 mb-1 float-right" href="{% url 'blog-home' %}">Posts Home</a><br/><br/>
 	{% if is_paginated %}
              {% if page_obj.has_previous %}
 	         <a class="btn btn-outline-info mb-4" href="?page=1">First</a>

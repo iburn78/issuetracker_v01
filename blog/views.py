@@ -24,6 +24,10 @@ class PostListView(ListView):
         context['common_tags'] = Post.tags.most_common()[:5]
         return context
 
+class PostCompactListView(PostListView):
+    template_name = 'blog/post_compact_list.html'
+    paginate_by = 70
+
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html' # <app>/<model>_<viewtype>.html
