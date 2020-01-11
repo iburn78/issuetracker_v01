@@ -9,6 +9,8 @@ from .views import (
         UserPostListView, 
         TaggedPostListView, 
         PostCompactListView,
+        PostCompact_UserListView,
+        PostCompact_TagListView,
         )
 from . import views
 
@@ -22,6 +24,9 @@ urlpatterns = [
     path('about/', views.about, name='blog-about'),
     path('tag/<int:pk>', TaggedPostListView.as_view(), name='tagged-posts'), 
     path('list/', PostCompactListView.as_view(), name='post-compact-list'),
+    path('user_list/<str:username>', PostCompact_UserListView.as_view(), name='user-post-list'), 
+    path('tag_list/<int:pk>', PostCompact_TagListView.as_view(), name='tag-post-list'), 
+    path('dashboard/', views.dashboard_view, name='website-stats'),
 ] 
 
 

@@ -26,7 +26,35 @@ class PostListView(ListView):
 
 class PostCompactListView(PostListView):
     template_name = 'blog/post_compact_list.html'
-    paginate_by = 70
+    paginate_by = 50
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['common_tags'] = Post.tags.most_common()[:15]
+        context['total_num'] = Post.objects.count() 
+        return context
+
+class PostCompact_UserListView(PostCompactListView):
+    def get_queryset(self): 
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        context['total_num'] = Post.objects.filter(author=user).order_by('-date_posted').count()
+        return context
+        
+class PostCompact_TagListView(PostCompactListView):
+    def get_queryset(self):
+        tag = get_object_or_404(Tag, id = self.kwargs.get('pk')) 
+        return Post.objects.filter(tags=tag).order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tag = get_object_or_404(Tag, id = self.kwargs.get('pk')) 
+        context['total_num'] = Post.objects.filter(tags=tag).order_by('-date_posted').count()
+        return context
 
 class UserPostListView(ListView):
     model = Post
@@ -45,11 +73,6 @@ class UserPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['common_tags'] = Post.tags.most_common()[:5]
-    #     return context
     
 class TaggedPostListView(ListView):
     model = Post
@@ -108,6 +131,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def about(request):
     return render(request, 'blog/about.html')
 
+def dashboard_view(request):
+    return render(request, 'blog/web_stats.html')
 
 
 
