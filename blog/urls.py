@@ -27,6 +27,7 @@ urlpatterns = [
     path('user_list/<str:username>', PostCompact_UserListView.as_view(), name='user-post-list'), 
     path('tag_list/<int:pk>', PostCompact_TagListView.as_view(), name='tag-post-list'), 
     path('dashboard/', views.dashboard_view, name='website-stats'),
+    path('dashboard/', views.dev_note_view, name='website-stats'),
 ] 
 
 

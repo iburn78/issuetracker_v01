@@ -134,5 +134,7 @@ def about(request):
 def dashboard_view(request):
     return render(request, 'blog/web_stats.html')
 
+def dev_note_view(request):
+    return render(request, 'blog/dev_note.html')
 
 
