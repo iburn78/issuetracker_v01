@@ -1,16 +1,30 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.core.mail import send_mail
+import datetime
 
 def register(request): 
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            user.is_active = False
+            user.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}! You are now able to login.')
+            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Your account will be activated once the admin approves. Please visit us later. Thank you.')
+
+            send_mail(
+                f'New User ({username}) to issuetracker.kr has been added.',
+                f'''{username} is registred at {datetime.datetime.now()}''',
+                'issuetree.tracker@gmail.com',
+                ['issuetree.tracker@gmail.com'],
+                fail_silently=False,
+            )
+
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -36,5 +50,3 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
-
-

@@ -73,7 +73,7 @@ class UserPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
-    
+
 class TaggedPostListView(ListView):
     model = Post
     template_name = 'blog/tag_posts.html'
