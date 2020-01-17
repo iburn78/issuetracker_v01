@@ -1,6 +1,7 @@
 # Andy added items
 settings.py
 media/
+migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
