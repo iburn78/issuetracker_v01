@@ -25,7 +25,7 @@
 					<a href="{% url 'tagged-posts' tag.id %}" class="mr-1 badge badge-info mt-1">#{{ tag }}</a>
 				{% endfor %}
 			</div>
-			<p class="article-content mt-2 mb-1">{{ post.content }}</p>
+			<p class="article-content mt-2 mb-1">{{ post.content | safe }}</p>
 			<p align = 'right'><small class="text-muted">-- issuetracker post</small></p>
 		</article>
 	{% endfor %}

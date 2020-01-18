@@ -3,14 +3,13 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
-from ckeditor.fields import RichTextField
-from ckeditor.widgets import CKEditorWidget
+from tinymce.models import HTMLField
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=100)
-    content = models.TextField(widget=CKEditorWidget())
+    content = HTMLField()
     image = models.ImageField(upload_to='post_imgs', blank=True)
     tags = TaggableManager(blank = True)
 
