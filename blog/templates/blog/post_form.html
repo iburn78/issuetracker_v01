@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/inline/ckeditor.js"></script>
     <div class="content-section">
 	<form method="POST" enctype="multipart/form-data">
 	    {% csrf_token %}
@@ -12,6 +13,6 @@
 			<button class="btn btn-outline-info" type="submit">Post</button>
 	    </div>
 	</form>
-    </div>
+	</div>
 {% endblock content %}
 
