@@ -11,6 +11,7 @@ from .views import (
         PostCompactListView,
         PostCompact_UserListView,
         PostCompact_TagListView,
+        SearchFormView,
         )
 from . import views
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('tag_list/<int:pk>', PostCompact_TagListView.as_view(), name='tag-post-list'), 
     path('dashboard/', views.dashboard_view, name='website-stats'),
     path('dev/', views.dev_note_view, name='dev_note'),
+    path('search/', SearchFormView.as_view(), name='search-form'),
 ] 
 
 

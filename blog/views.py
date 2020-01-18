@@ -11,6 +11,9 @@ from django.views.generic import (
 from django.http import HttpResponse
 from .models import Post 
 from taggit.models import Tag
+from django.views.generic.edit import FormView
+from blog.forms import PostSearchForm
+from django.db.models import Q
 
 class PostListView(ListView):
     model = Post
@@ -138,3 +141,13 @@ def dev_note_view(request):
     return render(request, 'blog/dev_note.html')
 
 
+class SearchFormView(FormView):
+    form_class = PostSearchForm
+    template_name = 'blog/search_form.html'
+
+    def form_valid(self, form):
+        search_term = str(self.request.POST['search_term']) 
+        context = self.get_context_data()
+        context['search_term'] = search_term
+        context['search_result_list'] = Post.objects.filter(Q(title__icontains=search_term) | Q(content__icontains=search_term) ).distinct().order_by('-date_posted') 
+        return  render(self.request, self.template_name, context)
