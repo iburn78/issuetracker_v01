@@ -93,7 +93,7 @@ ext_db_config = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'Practice',
+        'NAME': 'IssuetrackerDB',
         'USER': ext_db_config['user'],
         'PASSWORD': ext_db_config['password'],
         'HOST': ext_db_config['AWS_RDS_Host'],
