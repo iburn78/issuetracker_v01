@@ -137,10 +137,6 @@ def about(request):
 def dashboard_view(request):
     return render(request, 'blog/web_stats.html')
 
-def dev_note_view(request):
-    return render(request, 'blog/dev_note.html')
-
-
 class SearchFormView(FormView):
     form_class = PostSearchForm
     template_name = 'blog/search_form.html'
